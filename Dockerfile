@@ -1,14 +1,31 @@
-# Riak
+#######################################################################################
+# Docker -> tripR
 #
-# VERSION       0.4.3
+#                    ##        .
+#              ## ## ##       ==
+#           ## ## ## ##      ===
+#       /""""""""""""""""\___/ ===
+#  ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
+#       \______ o          __/
+#         \    \        __/
+#          \____\______/
+#
+# Component:    docker-base
+# Author:       Pierre-Marie de Jaureguiberry <pierre.marie.de.jaureguiberry@gmail.com>
+#######################################################################################
 
 FROM phusion/baseimage:0.9.9
-MAINTAINER Hector Castro hector@basho.com
+MAINTAINER Pierre-Marie de Jaureguiberry <pierre.marie.de.jaureguiberry@gmail.com>
+
+# reduce output from debconf
+ENV DEBIAN_FRONTEND noninteractive
+ENV PATH /usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Environmental variables
-ENV DEBIAN_FRONTEND noninteractive
 ENV RIAK_VERSION 1.4.8
 ENV RIAK_SHORT_VERSION 1.4
+
+RUN export DOCKER_HOST="tcp://127.0.0.1:4243"
 
 # Install Riak
 ADD http://s3.amazonaws.com/downloads.basho.com/riak/${RIAK_SHORT_VERSION}/${RIAK_VERSION}/ubuntu/precise/riak_${RIAK_VERSION}-1_amd64.deb /
