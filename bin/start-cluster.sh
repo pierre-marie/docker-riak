@@ -56,14 +56,14 @@ do
                -p $publish_pb_port \
                --link "riak01:seed" \
                --name "riak${index}" \
-               -d hectcastro/riak > /dev/null 2>&1
+               -d tripr/riak > /dev/null 2>&1
   else
     docker run -e "DOCKER_RIAK_CLUSTER_SIZE=${DOCKER_RIAK_CLUSTER_SIZE}" \
                -e "DOCKER_RIAK_AUTOMATIC_CLUSTERING=${DOCKER_RIAK_AUTOMATIC_CLUSTERING}" \
                -p $publish_http_port \
                -p $publish_pb_port \
                --name "riak${index}" \
-               -d hectcastro/riak > /dev/null 2>&1
+               -d tripr/riak > /dev/null 2>&1
   fi
 
   CONTAINER_ID=$(docker ps | egrep "riak${index}[^/]" | cut -d" " -f1)
