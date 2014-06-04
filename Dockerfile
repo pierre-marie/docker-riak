@@ -36,8 +36,6 @@ ENV PATH /usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/s
 ENV RIAK_VERSION 1.4.8
 ENV RIAK_SHORT_VERSION 1.4
 
-RUN export DOCKER_HOST="tcp://127.0.0.1:4243"
-
 # Install Riak
 ADD http://s3.amazonaws.com/downloads.basho.com/riak/${RIAK_SHORT_VERSION}/${RIAK_VERSION}/ubuntu/precise/riak_${RIAK_VERSION}-1_amd64.deb /
 RUN (cd / && dpkg -i "riak_${RIAK_VERSION}-1_amd64.deb")
