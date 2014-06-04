@@ -6,6 +6,7 @@ build riak-container:
 	docker build -t "tripr/riak" .
 
 start-cluster:
+	./bin/stop-cluster.sh
 	./bin/start-cluster.sh
 
 test-cluster:
